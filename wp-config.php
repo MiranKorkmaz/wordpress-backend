@@ -17,9 +17,15 @@
  *
  * @package WordPress
  */
+// Used to automatically load the vendor when creating new classes
 require_once dirname(__FILE__) . 'vendor/autoload.php';
+
+// Instantiate the class
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
+
+// Not needed but can be used to be extra sure of requiring the env file
+$dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASSWORD']);
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
